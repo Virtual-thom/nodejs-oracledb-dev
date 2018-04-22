@@ -43,7 +43,10 @@ export default class Stat {
   */
   getLast(resolve, reject){
     this._buildWhere()
-    oracledb.getConnection(dbconfig)
+
+    // On veut un filtre à la construction
+    if(this.where != ""){
+      oracledb.getConnection(dbconfig)
       .then(conn => {
         conn.execute(
           `SELECT * FROM ${this.table}
@@ -57,6 +60,10 @@ export default class Stat {
       .catch(error => {
         reject(error)
       })
+    }else{
+      reject({"error": "Vérifier la request query env, app, job"})
+    }
+    
   }
   
 }
