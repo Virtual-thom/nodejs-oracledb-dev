@@ -1,0 +1,1 @@
+{"version":3,"sources":["js\\main.js"],"names":["console","log"],"mappings":";;;;;AAAA;;AACAA,QAAQC,GAAR,CAAY,SAAZ","file":"main.44c6934a.map","sourceRoot":"..\\src","sourcesContent":["import '../sass/main.sass'\nconsole.log(\"bonjour\")"]}
