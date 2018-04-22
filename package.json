@@ -17,12 +17,13 @@
   "license": "ISC",
   "homepage": "https://github.com/thomas-asnar/dev#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "body-parser": "^1.18.2",
     "compression": "^1.7.2",
     "express": "^4.16.3",
     "oracledb": "^2.2.0",
-    "serve-static": "^1.13.2",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1"
+    "serve-static": "^1.13.2"
   },
   "devDependencies": {
     "bootstrap": "^4.1.0",

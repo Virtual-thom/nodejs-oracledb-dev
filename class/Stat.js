@@ -5,11 +5,11 @@ import dbconfig from '../config/dbconfig'
 export default class Stat {
   
   constructor(req){
-    console.log(req.body, req.query, req.params)
+    //console.log(req.body, req.query, req.params)
     this.table = "STATS"
     this.columns = ['env', 'app', 'job']
     this.columns.forEach((column) => { 
-      this[column] = req.query[column]
+      this[column] = req.body[column]
     })
     this.orderby = "ORDER BY " + this.columns.join(",") + " DESC"
   }
