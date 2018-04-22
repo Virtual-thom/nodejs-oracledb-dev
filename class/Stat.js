@@ -5,10 +5,13 @@ import dbconfig from '../config/dbconfig'
 export default class Stat {
   
   constructor(req){
+    console.log(req.body, req.query, req.params)
     this.table = "STATS"
-    this.env = req.query.env
-    this.app = req.query.app
-    this.job = req.query.job
+    this.columns = ['env', 'app', 'job']
+    this.columns.forEach((column) => { 
+      this[column] = req.query[column]
+    })
+    this.orderby = "ORDER BY " + this.columns.join(",") + " DESC"
   }
 
   _buildWhere(){
@@ -16,8 +19,8 @@ export default class Stat {
     this.where = ""
     let whereConstruct = []
 
-    let elements = ['env', 'app', 'job']
-    elements.forEach((element) => { 
+    let elements = 
+    this.columns.forEach((element) => { 
       
       // si l'élement existe, on le bind et on ajoute à la requête where
       if(this[element] !== undefined){
@@ -32,8 +35,7 @@ export default class Stat {
 
     if(whereConstruct.length > 0){
       this.where = "WHERE " + whereConstruct.join(" AND ")
-    }
-     
+    }     
   }
 
   // Doit être appelée avec une Promise
@@ -51,6 +53,7 @@ export default class Stat {
         conn.execute(
           `SELECT * FROM ${this.table}
           ${this.where}
+          ${this.orderby}
           `,
           this.bindings
         ).then(result => {

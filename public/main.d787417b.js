@@ -1,0 +1,6 @@
+parcelRequire=function(e,r,n){var t="function"==typeof parcelRequire&&parcelRequire,i="function"==typeof require&&require;function u(n,o){if(!r[n]){if(!e[n]){var f="function"==typeof parcelRequire&&parcelRequire;if(!o&&f)return f(n,!0);if(t)return t(n,!0);if(i&&"string"==typeof n)return i(n);var c=new Error("Cannot find module '"+n+"'");throw c.code="MODULE_NOT_FOUND",c}a.resolve=function(r){return e[n][1][r]||r};var l=r[n]=new u.Module(n);e[n][0].call(l.exports,a,l,l.exports)}return r[n].exports;function a(e){return u(a.resolve(e))}}u.isParcelRequire=!0,u.Module=function(e){this.id=e,this.bundle=u,this.exports={}},u.modules=e,u.cache=r,u.parent=t;for(var o=0;o<n.length;o++)u(n[o]);return u}({4:[function(require,module,exports) {
+
+},{}],2:[function(require,module,exports) {
+"use strict";require("../sass/main.sass");var n=function(n,e){return new Promise(function(t,o){var r=new XMLHttpRequest;r.open("POST",n,!0),r.setRequestHeader("Content-type","application/json"),r.onload=function(){return t(r.responseText)},r.onerror=function(){return o(r.statusText)},r.send(e)})};n("/top100/api/getstat",{env:"env1"}).then(function(n){return console.log(n)}).catch(function(n){return console.log(n)});
+},{"../sass/main.sass":4}]},{},[2])
+//# sourceMappingURL=/main.46d51828.map

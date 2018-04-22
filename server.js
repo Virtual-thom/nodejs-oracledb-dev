@@ -7,11 +7,11 @@ let app = express()
 
 
 // Middleware
-app.use(compression())
+app.use(compression())  
 app.use(serveStatic('public', {'index': ['index.html']}))
 
 // Routes
-app.get('/top100/api/getstat', (req, res) => {
+app.post('/top100/api/getstat', (req, res) => {
   let jobStat = new Stat(req)
   let p1 = new Promise((resolve, reject) => jobStat.getLast(resolve, reject))
   p1.then(result => res.json(result)).catch(err => res.json({"error":err}))
