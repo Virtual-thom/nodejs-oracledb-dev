@@ -1,5 +1,5 @@
 {
-    "user": "dev",
-    "password": "devpassw0rd",
-    "connectString":"localhost/XE"
+    "user": "UGAO",
+    "password": "UGAO",
+    "connectString":"UD0BD001.sigcesie.caisse-epargne.fr:1525/REFGCL"
 }

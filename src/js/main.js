@@ -1,6 +1,6 @@
 "use strict" ;
 
-import '../sass/main.sass'
+import '../sass/main.scss'
 
 // HTMLElements
 let theadResult = document.querySelector("#result thead")
@@ -19,7 +19,7 @@ let getLastStat = (url, data) => {
   });
 }
 
-getLastStat("/top100/api/getstat", {"env": "env1"})
+getLastStat("/top100/api/getstat", {"vtdomaine": "UP2TO005", "vtenvname": "IAM"})
   .then(result => {
     console.log(result)
     

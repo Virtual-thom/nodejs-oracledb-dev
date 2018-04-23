@@ -1,0 +1,60 @@
+// on peut surdéfinir bootstrap ici
+// violet BPCE-IT
+$purple: #691F75 !default;
+$theme-colors: (
+  "primary":$purple
+);
+$sizes: () !default;
+$sizes: map-merge((
+  10: 10%,
+  15: 15%,
+  20: 20%,
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  auto: auto
+), $sizes);
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    background: $purple;
+    font-size: 0.75rem;
+}
+
+.container {
+    background: $gray-100;
+    max-width: 98%;
+}
+  .hidden {
+    display: none;
+}
+
+tr.bg-primary {
+    color:#FFF;
+}
+tr.bg-primary th {
+    vertical-align: middle;
+    text-align:center;
+}
+
+@keyframes rotationIconeMeteo {
+    0%, 100% {
+        transform: rotate(0deg)
+    }
+    50% {
+        transform: rotate(360deg)
+    }
+}

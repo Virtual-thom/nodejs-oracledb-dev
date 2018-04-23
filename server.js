@@ -11,6 +11,7 @@ let app = express()
 app.use(compression())  
 app.use(serveStatic('public', {'index': ['index.html']}))
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // Routes
 app.post('/top100/api/getstat', (req, res) => {

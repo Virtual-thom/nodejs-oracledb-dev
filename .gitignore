@@ -4,6 +4,9 @@ dist/
 # cache
 .cache/
 
+# config
+config/dbconfig.json
+
 # Logs
 logs
 *.log

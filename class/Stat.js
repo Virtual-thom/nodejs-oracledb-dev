@@ -6,12 +6,14 @@ export default class Stat {
   
   constructor(req){
     //console.log(req.body, req.query, req.params)
-    this.table = "STATS"
-    this.columns = ['env', 'app', 'job']
+    this.table = "TOP100_STATS_TRT"
+    this.maxRows = 1
+    this.columns = ['vtdomaine', 'vtenvname', 'vtapplname', 'vtjobname', 'vtstatus', 'vtbegin', 'vtend', 'vterrmess', 'vtexpdatevalue', 'vtcomment']
+    this.columnsExploded = this.columns.join(",")
     this.columns.forEach((column) => { 
       this[column] = req.body[column]
     })
-    this.orderby = "ORDER BY " + this.columns.join(",") + " DESC"
+    this.orderby = "ORDER BY VTEND, " + this.columnsExploded + " DESC"
   }
 
   _buildWhere(){
@@ -51,20 +53,28 @@ export default class Stat {
       oracledb.getConnection(dbconfig)
       .then(conn => {
         conn.execute(
-          `SELECT * FROM ${this.table}
+          `SELECT ${this.columnsExploded}
+          FROM ${this.table}
           ${this.where}
           ${this.orderby}
           `,
-          this.bindings
-        ).then(result => {
+          this.bindings,
+          { maxRows: this.maxRows}
+        )
+        .then(result => {
           resolve(result)
+          conn.close()
+        })
+        .catch(error => {
+          reject(error)
+          conn.close()
         })
       })
       .catch(error => {
         reject(error)
       })
     }else{
-      reject({"error": "Vérifier la request query env, app, job"})
+      reject({"error": "Vérifier la request query " + this.columnsExploded})
     }
     
   }
